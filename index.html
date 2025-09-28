@@ -9,10 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     <style>
-        /* === EXCLUPOWER BRANDING V6.1 - ALLES-IN-EEN === */
+        /* === EXCLUPOWER BRANDING V8.0 - MAXIMALE COMPATIBILITEIT === */
         :root {
             --primary-accent: #ffb800;
             --dark-text: #212529;
@@ -35,7 +34,7 @@
         }
         a { text-decoration: none; color: var(--primary-accent); }
 
-        /* === HERO HEADER MET GIF-ACHTERGROND === */
+        /* === HERO HEADER MET GEANIMEERDE GRADIENT (WATERDICHTE OPLOSSING) === */
         .hero-header {
             position: relative;
             height: 60vh;
@@ -47,15 +46,14 @@
             text-align: center;
             color: var(--white);
             overflow: hidden;
-            background-image: url('https://cdn.pixabay.com/animation/2022/10/21/21/57/21-57-12-87_512.gif');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(-45deg, #0a254a, #007bff, #212529, #0a254a);
+            background-size: 400% 400%;
+            animation: gradient-animation 15s ease infinite;
         }
-        .hero-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(45deg, rgba(10, 37, 74, 0.8), rgba(20, 30, 40, 0.6));
-            z-index: 1;
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         .hero-content { position: relative; z-index: 2; }
         .hero-content h1 { font-size: 3.5em; font-weight: 700; margin: 0 0 15px 0; }
@@ -99,14 +97,29 @@
         .blog-card p { color: var(--text-muted); margin: 0 0 20px 0; }
         .read-more { font-weight: 600; color: var(--primary-accent); }
 
-        /* === YOUTUBE CARROUSEL === */
+        /* === YOUTUBE GRID (SIMPELE & STABIELE OPLOSSING) === */
         .youtube-section { background-color: var(--light-gray); }
-        .youtube-swiper { width: 100%; max-width: 900px; margin: 0 auto; overflow: hidden; position: relative; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); }
-        .video-container { position: relative; padding-bottom: 56.25%; height: 0; width: 100%; background: #000; }
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-        .swiper-button-next, .swiper-button-prev { color: var(--primary-accent) !important; background-color: rgba(0,0,0,0.3); border-radius: 50%; width: 50px !important; height: 50px !important; transition: background-color 0.2s ease; }
-        .swiper-button-next:hover, .swiper-button-prev:hover { background-color: rgba(0,0,0,0.5); }
-        .swiper-button-next::after, .swiper-button-prev::after { font-size: 20px !important; font-weight: bold; }
+        .youtube-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            background: #000;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
 
         /* === FOOTER === */
         .main-footer { background-color: var(--dark-text); color: var(--white); padding: 60px 0 30px 0; text-align: center; }
@@ -117,7 +130,6 @@
 <body>
 
     <header class="hero-header">
-        <div class="hero-overlay"></div>
         <div class="container hero-content">
             <h1>Exclupower Kennisplatform</h1>
             <p>Uw complete gids in de wereld van energieopslag. Van de basisprincipes tot expert-analyses, hier vindt u alles wat u nodig heeft om de slimste keuze te maken voor uw woning.</p>
@@ -130,8 +142,6 @@
 
     <section class="section">
         <div class="container">
-            <h2 class="section-title">Ontdek Alles Over Thuisbatterijen</h2>
-            <p class="section-subtitle">Navigeer door onze kennispilaren en word zelf een expert. We hebben complexe onderwerpen opgedeeld in heldere, begrijpelijke artikelen.</p>
             <div class="grid-container">
                 <div class="content-pillar"><h2><i class="fa-solid fa-landmark"></i> De Basis Begrijpen</h2><ul><li><a href="#">Hoe werkt een thuisbatterij?</a></li><li><a href="#">De 5 belangrijkste voordelen</a></li><li><a href="#">Eerlijk over de nadelen & overwegingen</a></li><li><a href="#">Soorten batterijen (LFP vs. NMC)</a></li><li><a href="#">Een batterij zonder zonnepanelen?</a></li></ul></div>
                 <div class="content-pillar"><h2><i class="fa-solid fa-euro-sign"></i> Verdienen & Rendement</h2><ul><li><a href="#">Terugverdientijd & Rendement uitgelegd</a></li><li><a href="#">De 3 belangrijkste verdienmodellen</a></li><li><a href="#">Handelen met een dynamisch contract</a></li><li><a href="#">Impact van de afbouw salderingsregeling</a></li><li><a href="#">Hoe vraagt u 21% BTW terug?</a></li></ul></div>
@@ -170,15 +180,17 @@
     <section class="section youtube-section">
         <div class="container">
             <h2 class="section-title">Bekijk onze Video's</h2>
-            <p class="section-subtitle">Zie onze producten in actie en krijg uitleg van onze installateurs. Blader door onze meest populaire video's.</p>
-            <div class="swiper youtube-swiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide"><div class="video-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></div>
-                    <div class="swiper-slide"><div class="video-container"><iframe src="https://www.youtube.com/embed/_x-gtzB-b-s" title="YouTube video player 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></div>
-                    <div class="swiper-slide"><div class="video-container"><iframe src="https://www.youtube.com/embed/xv-p8_q_5I4" title="YouTube video player 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></div>
+            <p class="section-subtitle">Zie onze producten in actie en krijg uitleg van onze installateurs. Drie van onze meest populaire video's.</p>
+            <div class="youtube-grid">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/_x-gtzB-b-s" title="YouTube video player 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/xv-p8_q_5I4" title="YouTube video player 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
             </div>
         </div>
     </section>
@@ -191,16 +203,5 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-        const swiper = new Swiper('.youtube-swiper', {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-        });
-    </script>
 </body>
 </html>
