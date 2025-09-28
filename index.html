@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kennisplatform Thuisbatterijen - Exclupower</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <style>
+        /* === EXCLUPOWER BRANDING V6.1 - ALLES-IN-EEN === */
+        :root {
+            --primary-accent: #ffb800;
+            --dark-text: #212529;
+            --light-gray: #f8f9fa;
+            --white: #ffffff;
+            --border-color: #dee2e6;
+            --text-muted: #6c757d;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--white);
+            color: var(--dark-text);
+            margin: 0;
+            line-height: 1.7;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        a { text-decoration: none; color: var(--primary-accent); }
+
+        /* === HERO HEADER MET GIF-ACHTERGROND === */
+        .hero-header {
+            position: relative;
+            height: 60vh;
+            min-height: 450px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            overflow: hidden;
+            background-image: url('https://cdn.pixabay.com/animation/2022/10/21/21/57/21-57-12-87_512.gif');
+            background-size: cover;
+            background-position: center;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(45deg, rgba(10, 37, 74, 0.8), rgba(20, 30, 40, 0.6));
+            z-index: 1;
+        }
+        .hero-content { position: relative; z-index: 2; }
+        .hero-content h1 { font-size: 3.5em; font-weight: 700; margin: 0 0 15px 0; }
+        .hero-content p { font-size: 1.25em; max-width: 700px; margin: 0 auto 40px auto; opacity: 0.9; }
+        .search-bar-placeholder { background-color: rgba(255,255,255,0.9); border-radius: 50px; padding: 5px 5px 5px 25px; max-width: 500px; margin: 0 auto; display: flex; align-items: center; box-shadow: 0 5px 20px rgba(0,0,0,0.2); }
+        .search-bar-placeholder i { color: var(--text-muted); }
+        .search-bar-placeholder input { width: 100%; border: none; background: transparent; padding: 15px; font-size: 1.1em; color: var(--dark-text); }
+        .search-bar-placeholder input:focus { outline: none; }
+        .search-bar-placeholder input::placeholder { color: var(--text-muted); }
+
+        /* === ALGEMENE SECTIE STYLING === */
+        .section { padding: 80px 0; }
+        .section-title { text-align: center; font-size: 2.8em; font-weight: 700; color: var(--dark-text); margin-bottom: 15px; }
+        .section-subtitle { text-align: center; font-size: 1.15em; color: var(--text-muted); margin: 0 auto 60px auto; max-width: 750px; }
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 30px; }
+
+        /* === KENNISBANK GRID === */
+        .content-pillar { background-color: var(--white); border-radius: 12px; padding: 30px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.04); transition: all 0.3s ease; }
+        .content-pillar:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        .content-pillar h2 { font-size: 1.6em; color: var(--dark-text); margin: 0 0 20px 0; display: flex; align-items: center; }
+        .content-pillar h2 .fa-solid { color: var(--primary-accent); margin-right: 15px; font-size: 0.9em; }
+        .content-pillar ul { list-style: none; padding: 0; margin: 0; }
+        .content-pillar li { margin-bottom: 12px; }
+        .content-pillar a { color: var(--dark-text); font-weight: 500; display: block; padding: 8px 12px; border-radius: 8px; transition: all 0.2s ease-in-out; }
+        .content-pillar a:hover { background-color: #fff9eb; color: var(--dark-text); padding-left: 18px; }
+        .content-pillar a::before { content: '›'; margin-right: 10px; font-weight: bold; color: var(--primary-accent); }
+        
+        /* === OVERIGE SECTIES === */
+        .why-us-section { background-color: var(--light-gray); }
+        .feature-card { text-align: center; padding: 20px; }
+        .feature-card .icon { font-size: 3em; color: var(--primary-accent); margin-bottom: 20px; }
+        .feature-card h3 { font-size: 1.4em; color: var(--dark-text); margin-bottom: 10px; }
+        .blog-section { background-color: var(--white); }
+        .blog-card { background-color: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.04); transition: all 0.3s ease; display: flex; flex-direction: column; border: 1px solid var(--border-color); }
+        .blog-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        .blog-card a { color: inherit; display: flex; flex-direction: column; height: 100%; }
+        .blog-card img { width: 100%; height: 200px; object-fit: cover; }
+        .blog-card-content { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
+        .blog-card-category { background-color: var(--primary-accent); color: var(--dark-text); padding: 4px 10px; border-radius: 20px; font-size: 0.8em; font-weight: 600; align-self: flex-start; margin-bottom: 15px; }
+        .blog-card h3 { font-size: 1.3em; color: var(--dark-text); margin: 0 0 10px 0; flex-grow: 1; }
+        .blog-card p { color: var(--text-muted); margin: 0 0 20px 0; }
+        .read-more { font-weight: 600; color: var(--primary-accent); }
+
+        /* === YOUTUBE CARROUSEL === */
+        .youtube-section { background-color: var(--light-gray); }
+        .youtube-swiper { width: 100%; max-width: 900px; margin: 0 auto; overflow: hidden; position: relative; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; width: 100%; background: #000; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .swiper-button-next, .swiper-button-prev { color: var(--primary-accent) !important; background-color: rgba(0,0,0,0.3); border-radius: 50%; width: 50px !important; height: 50px !important; transition: background-color 0.2s ease; }
+        .swiper-button-next:hover, .swiper-button-prev:hover { background-color: rgba(0,0,0,0.5); }
+        .swiper-button-next::after, .swiper-button-prev::after { font-size: 20px !important; font-weight: bold; }
+
+        /* === FOOTER === */
+        .main-footer { background-color: var(--dark-text); color: var(--white); padding: 60px 0 30px 0; text-align: center; }
+        .main-footer .logo { font-size: 1.8em; font-weight: 700; margin-bottom: 20px; }
+        .main-footer p { opacity: 0.7; }
+    </style>
+</head>
+<body>
+
+    <header class="hero-header">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1>Exclupower Kennisplatform</h1>
+            <p>Uw complete gids in de wereld van energieopslag. Van de basisprincipes tot expert-analyses, hier vindt u alles wat u nodig heeft om de slimste keuze te maken voor uw woning.</p>
+            <div class="search-bar-placeholder">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Doorzoek alle artikelen..." disabled>
+            </div>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Ontdek Alles Over Thuisbatterijen</h2>
+            <p class="section-subtitle">Navigeer door onze kennispilaren en word zelf een expert. We hebben complexe onderwerpen opgedeeld in heldere, begrijpelijke artikelen.</p>
+            <div class="grid-container">
+                <div class="content-pillar"><h2><i class="fa-solid fa-landmark"></i> De Basis Begrijpen</h2><ul><li><a href="#">Hoe werkt een thuisbatterij?</a></li><li><a href="#">De 5 belangrijkste voordelen</a></li><li><a href="#">Eerlijk over de nadelen & overwegingen</a></li><li><a href="#">Soorten batterijen (LFP vs. NMC)</a></li><li><a href="#">Een batterij zonder zonnepanelen?</a></li></ul></div>
+                <div class="content-pillar"><h2><i class="fa-solid fa-euro-sign"></i> Verdienen & Rendement</h2><ul><li><a href="#">Terugverdientijd & Rendement uitgelegd</a></li><li><a href="#">De 3 belangrijkste verdienmodellen</a></li><li><a href="#">Handelen met een dynamisch contract</a></li><li><a href="#">Impact van de afbouw salderingsregeling</a></li><li><a href="#">Hoe vraagt u 21% BTW terug?</a></li></ul></div>
+                <div class="content-pillar"><h2><i class="fa-solid fa-list-check"></i> Kiezen & Vergelijken</h2><ul><li><a href="#"><strong>Onze Interactieve Vergelijkingstool</strong></a></li><li><a href="#">Welke capaciteit (kWh) heeft u nodig?</a></li><li><a href="#">De Ultieme Checklist voor Aankoop</a></li><li><a href="#">Alle specificaties helder uitgelegd</a></li><li><a href="#">Analyse: De beste thuisbatterij van 2025</a></li></ul></div>
+                <div class="content-pillar"><h2><i class="fa-solid fa-tags"></i> Topmerken in Detail</h2><ul><li><a href="#">Marstek thuisbatterijen</a></li><li><a href="#">Anker Solix thuisbatterijen</a></li><li><a href="#">Hoymiles thuisbatterijen</a></li><li><a href="#">Sigenergy thuisbatterijen</a></li><li><a href="#">Kstar thuisbatterijen</a></li></ul></div>
+                <div class="content-pillar"><h2><i class="fa-solid fa-wrench"></i> Installatie & Praktijk</h2><ul><li><a href="#">Wat kost een thuisbatterij écht?</a></li><li><a href="#">Ons installatieproces in 5 stappen</a></li><li><a href="#">Is uw meterkast geschikt? Doe de check.</a></li><li><a href="#">Onderhoud en verwachte levensduur</a></li><li><a href="#">Alles over veiligheid en garantie</a></li></ul></div>
+                <div class="content-pillar"><h2><i class="fa-solid fa-newspaper"></i> Nieuws & Expert-inzichten</h2><ul><li><a href="#">Het laatste nieuws uit de energiemarkt</a></li><li><a href="#">Blog: 5 tips om nóg meer te besparen</a></li><li><a href="#">Klantverhaal: De familie Jansen</a></li><li><a href="#">Update: de stand van zaken rond netcongestie</a></li></ul></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section why-us-section">
+        <div class="container">
+             <h2 class="section-title">Waarom kiezen voor de expertise van Exclupower?</h2>
+            <p class="section-subtitle">Een thuisbatterij is een complexe investering. Wij maken het simpel, transparant en zorgen voor een perfect resultaat. Dat is onze belofte.</p>
+            <div class="grid-container">
+                <div class="feature-card"><div class="icon"><i class="fa-solid fa-user-tie"></i></div><h3>Eerlijk & Onafhankelijk Advies</h3><p>Wij zijn niet gebonden aan één merk. We luisteren naar uw wensen en adviseren de oplossing die technisch en financieel het beste bij ú past.</p></div>
+                <div class="feature-card"><div class="icon"><i class="fa-solid fa-hard-hat"></i></div><h3>Gecertificeerde Installateurs</h3><p>Geen ingehuurde partijen. Onze eigen, VCA-gecertificeerde monteurs zorgen voor een veilige, nette en perfect werkende installatie.</p></div>
+                <div class="feature-card"><div class="icon"><i class="fa-solid fa-star"></i></div><h3>Bewezen Klanttevredenheid</h3><p>Uw tevredenheid is onze drijfveer. We zijn trots op onze <strong>9.4/10</strong> score en streven ernaar om van elke klant een ambassadeur te maken.</p></div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section blog-section">
+        <div class="container">
+            <h2 class="section-title">Uitgelicht uit ons Blog</h2>
+            <p class="section-subtitle">Lees de laatste artikelen van onze experts vol met praktische tips, nieuws en klantverhalen.</p>
+            <div class="grid-container">
+                <article class="blog-card"><a href="#"><img src="https://images.pexels.com/photos/433308/pexels-photo-433308.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Artikel afbeelding"><div class="blog-card-content"><span class="blog-card-category">Praktische Tip</span><h3>Is uw dak geschikt voor zonnepanelen? De complete checklist.</h3><p>Niet elk dak is hetzelfde. Ontdek in 5 minuten of uw dak voldoet aan de eisen voor een maximaal rendement...</p><span class="read-more">Lees meer</span></div></a></article>
+                <article class="blog-card"><a href="#"><img src="https://images.pexels.com/photos/7245465/pexels-photo-7245465.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Artikel afbeelding"><div class="blog-card-content"><span class="blog-card-category">Nieuws</span><h3>Netcongestie in Nederland: Wat betekent het voor u als woningeigenaar?</h3><p>De term duikt overal op, maar wat houdt het nu echt in? We leggen het in duidelijke taal uit...</p><span class="read-more">Lees meer</span></div></a></article>
+                <article class="blog-card"><a href="#"><img src="https://images.pexels.com/photos/3854294/pexels-photo-3854294.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Artikel afbeelding"><div class="blog-card-content"><span class="blog-card-category">Klantverhaal</span><h3>Hoe familie De Vries uit Eindhoven volledig onafhankelijk werd</h3><p>Lees het inspirerende verhaal van een van onze klanten die met een slim systeem hun energierekening naar nul brachten...</p><span class="read-more">Lees meer</span></div></a></article>
+            </div>
+        </div>
+    </section>
+
+    <section class="section youtube-section">
+        <div class="container">
+            <h2 class="section-title">Bekijk onze Video's</h2>
+            <p class="section-subtitle">Zie onze producten in actie en krijg uitleg van onze installateurs. Blader door onze meest populaire video's.</p>
+            <div class="swiper youtube-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><div class="video-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></div>
+                    <div class="swiper-slide"><div class="video-container"><iframe src="https://www.youtube.com/embed/_x-gtzB-b-s" title="YouTube video player 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></div>
+                    <div class="swiper-slide"><div class="video-container"><iframe src="https://www.youtube.com/embed/xv-p8_q_5I4" title="YouTube video player 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer" id="contact">
+        <div class="container">
+            <div class="logo">Exclupower</div>
+            <p>Klaar om de volgende stap te zetten? Neem contact op voor een vrijblijvend adviesgesprek.</p>
+            <p>&copy; 2025 Exclupower. Alle rechten voorbehouden.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper('.youtube-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    </script>
+</body>
+</html>
